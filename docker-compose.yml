@@ -4,7 +4,7 @@ services:
   myos:
     image: mysql:5.7
     volumes:
-        - my_storage2:/var/lib/mysql
+        - my_storage3:/var/lib/mysql
     restart: always
     environment:
         MYSQL_ROOT_PASSWORD: rootpass
@@ -16,7 +16,7 @@ services:
   joomlaos:
         image: joomla:latest
         volumes:
-          - joomla_store:/var/www/html
+          - joomla_store3:/var/www/html
         restart: always
         depends_on:
           - myos
@@ -28,7 +28,6 @@ services:
           JOOMLA_DB_PASSWORD: redhat
           JOOMLA_DB_NAME: mydb
 
-
   volumes:
-       my_storage2:
-       joomla_store:
+       my_storage3:
+       joomla_store3:
