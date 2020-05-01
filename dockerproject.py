@@ -52,11 +52,8 @@ while True:
             Press 21: To check the Gateway of the container                                                                                                                             
             Press 22: To create a new volume inside docker                                                                                                                             
             Press 23: To check volume list
-
             press 24 : To start docker-compose file (for stopping the docker-compose use "ctrl+c")
-
             Press 25: Exit
-            
             """)
         print("Press any no. that you want to perform :" , end='')
         ch = input()
