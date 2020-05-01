@@ -6,4 +6,53 @@ gpgcheck=0
 baseurl=file:///run/media/root/RHEL-8-0-0-BaseOS-x86_64/BaseOS
 gpgcheck=0
 
+[docker]
+baseurl=https://download.docker.com/linux/centos/7/x86_64/stable/
+gpgcheck=0
 
+#version: '3.1'
+
+services:
+
+  drupal:
+     depends_on: 
+      - myos
+     ports:
+      - 8031:80
+     image: drupal:8-apache 
+     restart: always
+     environment:
+      - DRUPAL_DB_HOST=dbos
+      - DRUPAL_DB_USER=shubham     
+      - DRUPAL_DB_PASSWORD=redhat
+      - DRUPAL_DB_NAME=myos
+
+     volumes:
+      - drupal_storage:/var/www/html
+      # this takes advantage of the feature in Docker that a new anonymous
+      # volume (which is what we're creating here) will be initialized with the
+      # existing content of the image at the same location
+
+  myos:
+     image: mysql:latest
+     restart: always
+     environment:
+      - MYSQL_DATABASE=myos
+      - MYSQL_ROOT_PASSWORD=redhat
+      - MYSQL_USER=shubham
+      - MYSQL_PASSWORD=redhat
+
+     volumes: 
+      - mysql_storage:/var/lib/mysql
+  postgres:
+     image: postgres:10
+     environment:
+       POSTGRES_NAME: postgres
+       POST_GRES: postgres
+       POSTGRES_PASSWORD: example
+     restart: always
+     depends_on:
+      - myos
+volumes:
+  drupal_storage:
+  mysql_storage:  

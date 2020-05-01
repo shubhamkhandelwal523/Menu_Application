@@ -1,33 +1,26 @@
-version: '3'
-
+version: "3"
 services:
-  myos:
-    image: mysql:5.7
-    volumes:
-        - my_storage3:/var/lib/mysql
-    restart: always
-    environment:
-        MYSQL_ROOT_PASSWORD: rootpass
-        MYSQL_USER: shubham
-        MYSQL_PASSWORD: redhat
-        MYSQL_DATABASE : mydb
+        mysql:
+            image: mysql:5.7
+            ports:
+                - "5454:5454"
+            volumes:
+                - mysql_data:/var/lib/mysql
+            environment:
+                MYSQL_ROOT_PASSWORD: example
+        wordpress:
+            image: wordpress
+            ports:
+                - "8042:80"
+            volumes:
+                - mywebsite_data:/var/www/html
+            environment:
+                WORDPRESS_DB_PASSWORD: example
+            depends_on:
+                - mysql
+            links:
+                - mysql
 
-
-  joomlaos:
-        image: joomla:latest
-        volumes:
-          - joomla_store3:/var/www/html
-        restart: always
-        depends_on:
-          - myos
-        ports:
-          - 8069:69
-        environment:
-          JOOMLA_DB_HOST: myos
-          JOOMLA_DB_USER: shubham
-          JOOMLA_DB_PASSWORD: redhat
-          JOOMLA_DB_NAME: mydb
-
-  volumes:
-       my_storage3:
-       joomla_store3:
+volumes:
+        mysql_data:
+        mywebsite_data:
