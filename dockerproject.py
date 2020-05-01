@@ -53,7 +53,9 @@ while True:
             Press 22: To create a new volume inside docker                                                                                                                             
             Press 23: To check volume list
 
-            Press 24: Exit
+            press 24 : To start docker-compose file (for stopping the docker-compose use "ctrl+c")
+
+            Press 25: Exit
             
             """)
         print("Press any no. that you want to perform :" , end='')
@@ -166,6 +168,9 @@ while True:
                     os.system("tput setaf 5")
                     os.system("docker volume ls")
                 elif int(ch) == 24:
+                    os.system("tput setaf 4")
+                    os.system("docker-compose up")
+                elif int(ch) == 25:
                     os.system("tput setaf 2")
                     os.system("exit")
                     os.system("figlet -f block \t\t THANK YOU !")
@@ -283,6 +288,10 @@ while True:
                     os.system("tput setaf 5")
                     os.system("ssh {0} docker volume ls")
                 elif int(ch) == 24:
+                    os.system("tput setaf 4")
+                    os.system("ssh {0} docker-compose up")
+
+                elif int(ch) == 25:
                     os.system("tput setaf 2")
                     os.system("ssh {0} exit")
                     os.system("figlet -f banner \t\t THANK YOU !")
