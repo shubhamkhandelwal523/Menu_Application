@@ -1,0 +1,35 @@
+version: '3'
+
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB_NAME: root
+      POSTGRES_DB: drupaldb
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: redhat
+    volumes:
+      - wp_storage:/var/lib/postgresql
+  
+  cms:
+    image: drupal:8-apache
+    restart: always
+    ports:
+      - 8056:80
+    volumes:
+      - cms_modules:/var/www/html/modules
+      - cms_profiles:/var/www/html/profiles
+      - cms_themes:/var/www/html/themes
+      - cms_sites:/var/www/html/sites
+    depends_on:
+      - db
+  
+
+volumes:
+  wp_storage:
+  cms_modules:
+  cms_profiles:
+  cms_themes:
+  cms_sites:
