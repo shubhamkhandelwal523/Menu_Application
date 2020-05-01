@@ -19,9 +19,9 @@ for stop the docker-compose you have to use ("docker compose down/stop") or you 
 - firewall-cmd --reload
 - firewall-cmd --add-port= 3306/tcp
 - systemctl restart docker
-** some cmds of firewalld
+** some cmds of firewalld **
 
 - systemctl enable firewalld
 - systemctl disable firewalld or systemctl stop firewalld
-{ I would like to Thank The "WORLD RECORD HOLDER :- MR. VIMAL SIR" & " PREETI MAM " for a great initiative .
+- { I would like to Thank The "WORLD RECORD HOLDER :- MR. VIMAL SIR" & " PREETI MAM " for a great initiative .
 I created this project under the mendorshhip of Vimal sir }
