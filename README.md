@@ -11,17 +11,17 @@ but If you want to use it remotely you have to write the IP .
 for starting the docker-compose you have to use ("docker-compose up")
 for stop the docker-compose you have to use ("docker compose down/stop") or you can use "ctrl+c".
 ** IF someone is facing issue while running the docker-compose : use the cmds given below it will work file :
-iptables -F
-iptables -P FORWARD ACCEPT
-firewall-cmd --zone=trusted --change-interface=dockerO --permanent
-(If there are any other networks for docker add them too like br -xxxx)
-firewall-cmd --zone=trusted --add-masquerade --permanent
-firewall-cmd --reload
-firewall-cmd --add-port= 3306/tcp
-systemctl restart docker
+- iptables -F
+- iptables -P FORWARD ACCEPT
+- firewall-cmd --zone=trusted --change-interface=dockerO --permanent
+  (If there are any other networks for docker add them too like br -xxxx)
+- firewall-cmd --zone=trusted --add-masquerade --permanent
+- firewall-cmd --reload
+- firewall-cmd --add-port= 3306/tcp
+- systemctl restart docker
 ** some cmds of firewalld
 
-systemctl enable firewalld
-systemctl disable firewalld or systemctl stop firewalld
+- systemctl enable firewalld
+- systemctl disable firewalld or systemctl stop firewalld
 { I would like to Thank The "WORLD RECORD HOLDER :- MR. VIMAL SIR" & " PREETI MAM " for a great initiative .
 I created this project under the mendorshhip of Vimal sir }
