@@ -103,6 +103,9 @@ while True:
                     os.system("docker run -it {}".format(image_name))
                     print("Press :0 To exit")
                     os.system("exit")
+		elif int(ch) == 9
+		    os.system("tput setaf 6")
+		    os.system("docker ps ")
                 elif int(ch) == 10:
                     print("Enter what yo install :",end='')
                     install_name = input()
@@ -222,6 +225,9 @@ while True:
                     image_name = input()
                     os.system("docker run -it {2}".format(image_name))
                     print("Press :0 To exit")
+		elif int(ch) == 9
+		    os.system("tput setaf 6")
+		    os.system(" ssh {0} docker ps ")
                     os.system("exit")
                 elif int(ch) == 10:
                     print("Enter what yo install :",end='')
