@@ -1,5 +1,9 @@
 import os
 import getpass
+from pyfiglet import Figlet
+t=Figlet('big')
+
+print(t.renderText("\t\t HEY ! WELCOME YOU TO DOCKER "))
 os.system("tput setaf 3")
 print("***********************************************************************************")
 os.system("tput setaf 7")
@@ -23,11 +27,12 @@ print(location)
 if location == "remote":
     remoteIP = input("Enter Your IP :")
 os.system("tput setaf 3")
-os.system("figlet \t\t DOCKER WORLD !")
+print(t.renderText("\t\t DOCKER WORLD"))
 os.system("tput setaf 9")
 print("IMPORTANT : TO PERFORM ANY TASK YOU HAVE TO START THE DOCKER USING PRESS 4:")
 os.system("tput setaf 1")
 while True:
+          
         print("""
             Press 1: To Install Docker community edition.                                                                                                                                
             Press 2: To create gedit file                                                                                                                                               
@@ -58,54 +63,57 @@ while True:
         print("Press any no. that you want to perform :" , end='')
         ch = input()
         print(ch)
-
+	
         if location == "local":
+                os.system("tput setaf 3")
+                print(t.renderText("\t\t LOCALLY SELECTED"))
+
                 if int(ch) == 1:
                     os.system("tput setaf 7")
                     os.system("yum install docker-ce --nobest")
                 elif int(ch) == 2:
-                    print("Give file name only :" ,end='')
-                    file_name = input()
-                    os.system("tput setaf 7")
-                    os.system("gedit {}".format(file_name))
+                        print("Give file name only :" ,end='')
+                        file_name = input()
+                        os.system("tput setaf 7")
+                        os.system("gedit {}".format(file_name))
                 elif int(ch) == 3:
-                    os.system("tput setaf 7")
-                    os.system("gedit docker.repo")
+                        os.system("tput setaf 7")
+                        os.system("gedit docker.repo")
                 elif int(ch) == 4:
-                    print("Enter what you want to do start/stop/restart :" ,end ='')
-                    create_name = input()
-                    os.system("systemctl {} ".format(create_name))
-                    print("Enter your choice docker/httpd/firewall etc. :" , end ='')
-                    create_name = input()
-                    os.system("tput setaf 7")   
-                    os.system("systemctl start {} ".format(create_name))
+                        print("Enter what you want to do start/stop/restart :" ,end ='')
+                        create_name = input()
+                        os.system("systemctl {} ".format(create_name))
+                        print("Enter your choice docker/httpd/firewall etc. :" , end ='')
+                        create_name = input()
+                        os.system("tput setaf 7")   
+                        os.system("systemctl start {} ".format(create_name))
                 elif int(ch) == 5:
-                    print("Enter what you want to check :" ,end ='')
-                    check_name = input(ch)
-                    os.system("tput setaf 6")
-                    os.system("docker {} ".format(check_name))
+                        print("Enter what you want to check :" ,end ='')
+                        check_name = input(ch)
+                        os.system("tput setaf 6")
+                        os.system("docker {} ".format(check_name))
                 elif int(ch) == 6:
-                    print("Enter image name to pull :" ,end ='')
-                    image_name = input(ch)
-                    os.system("tput setaf 6")
-                    os.system("docker pull {} ".format(image_name))
+                        print("Enter image name to pull :" ,end ='')
+                        image_name = input(ch)
+                        os.system("tput setaf 6")
+                        os.system("docker pull {} ".format(image_name))
                 elif int(ch) == 7:
-                    print("Enter image name to create container :" ,end ='')
-                    image_name = input()
-                    os.system("tput setaf 6")
-                    os.system("docker run -it {}".format(image_name))
+                        print("Enter image name to create container :" ,end ='')
+                        image_name = input()
+                        os.system("tput setaf 6")
+                        os.system("docker run -it {}".format(image_name))
                 elif int(ch) == 8:
-                    print("Give name to the container :",end = '')
-                    name = input()
-                    os.system("docker container run -it  --name {}".format(name))
-                    print("Enter image name to create container :" ,end ='')
-                    image_name = input()
-                    os.system("docker run -it {}".format(image_name))
-                    print("Press :0 To exit")
-                    os.system("exit")
-		elif int(ch) == 9
-		    os.system("tput setaf 6")
-		    os.system("docker ps ")
+                        print("Give name to the container :",end = '')
+                        name = input()
+                        os.system("docker container run -it  --name {}".format(name))
+                        print("Enter image name to create container :" ,end ='')
+                        image_name = input()
+                        os.system("docker run -it {}".format(image_name))
+                        print("Press :0 To exit")
+                        os.system("exit")
+                elif int(ch) == 9:
+                    os.system("tput setaf 6")
+                    os.system("docker ps ")
                 elif int(ch) == 10:
                     print("Enter what yo install :",end='')
                     install_name = input()
@@ -181,7 +189,10 @@ while True:
                 os.system("clear")
                 
 
+     
         elif location == "remote":
+                os.system("tput setaf 3")
+                print(t.renderText("\t\t REMOTELY SELECTED"))
                 os.system("tput setaf 3")
                 if int(ch) == 1:
                     os.system("tput setaf 7")
@@ -225,9 +236,9 @@ while True:
                     image_name = input()
                     os.system("docker run -it {2}".format(image_name))
                     print("Press :0 To exit")
-		elif int(ch) == 9
-		    os.system("tput setaf 6")
-		    os.system(" ssh {0} docker ps ")
+                elif int(ch) == 9:
+                    os.system("tput setaf 6")
+                    os.system(" ssh {0} docker ps ")
                     os.system("exit")
                 elif int(ch) == 10:
                     print("Enter what yo install :",end='')
@@ -255,7 +266,7 @@ while True:
                     os.system("ssh {0} docker push {1}".format(enter_name))
                 elif int(ch) == 16:
                     os.system("tput setaf 5")
-                    os.system("netstat -tnlp")
+                    os.system("netstat -tnlp")  
                 elif int(ch) == 17:
                     print("Enter Image name :" ,end='')
                     image_name = input()
@@ -300,4 +311,5 @@ while True:
                     os.system("figlet -f banner \t\t THANK YOU !")
                 else:
                     print("Location doesn't exist")
+                
 	
